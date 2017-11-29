@@ -10,6 +10,9 @@ This is an Enigma emulator written in Python2.
 To run in Terminal:
 	python2 enigma.py 
 
+Here is the library that we will use:
+https://py-enigma.readthedocs.io/en/latest/
+
 The enigma machines were electro-mechanical rotor cipher machines developed by Arthur Scherbius in 1918. They were most notably used by Germany to encrypt military messages during WWII.
 
 The enigma machine is a mechanically operated device with an electrical signal passing through its wires and mechanical parts. Its components consisted of a keyboard, a plugboard, a static rotor, scramblers, a reflector, and a lampboard. The static rotor, scramblers, and reflector are all contained in the ‘rotors’ component.
