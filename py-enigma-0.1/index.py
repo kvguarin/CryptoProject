@@ -26,6 +26,16 @@ def simulator():
 @app.route("/decryptResult", methods=['POST'])
 def decryptResult():
     rotor1 = request.form['rotor1']
+    rotor2 = request.form['rotor2']
+    rotor3 = request.form['rotor3']
+    reflector = request.form['reflector']
+    ringSetting1 = request.form['ringSetting1']
+    ringSetting2 = request.form['ringSetting2']
+    ringSetting3 = request.form['ringSetting3']
+    startingPosition1 = request.form['startingPosition1']
+    startingPosition2 = request.form['startingPosition2']
+    startingPosition3 = request.form['startingPosition3']
+
 
 
     return 1
