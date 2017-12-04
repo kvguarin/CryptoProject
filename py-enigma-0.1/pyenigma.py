@@ -3,6 +3,6 @@
 # This file is part of Py-Enigma, the Enigma Machine simulation.
 # Py-Enigma is released under the MIT License (see License.txt).
 
-import enigma.main
+import enigma
 
 enigma.main.console_main()
