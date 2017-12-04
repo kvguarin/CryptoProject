@@ -72,6 +72,39 @@ def getRotor(rotor1, rotor2, rotor3):
 
 @app.route("/encryptResult", methods=['POST'])
 def encryptResult():
+    rotor1 = request.form['rotor1']
+    rotor2 = request.form['rotor2']
+    rotor3 = request.form['rotor3']
+    reflector = request.form['reflector']
+    ringSetting1 = request.form['ringSetting1']
+    ringSetting2 = request.form['ringSetting2']
+    ringSetting3 = request.form['ringSetting3']
+    startingPosition1 = request.form['startingPosition1']
+    startingPosition2 = request.form['startingPosition2']
+    startingPosition3 = request.form['startingPosition3']
+    messageKey = request.form['messageKey']
+    message = request.form['message']
+
+    rotors = getRotor(rotor1, rotor2, rotor3)
+    ringSettings = [ringSetting1, ringSetting2, ringSetting3]
+    setDisplay = startingPosition1 + startingPosition2 + startingPosition3
+
+    machine = EnigmaMachine.from_key_sheet(
+        rotors,
+        reflector,
+        ringSettings
+    )
+    # set machine initial starting position
+    machine.set_display(setDisplay)
+
+    #encrypt the key
+    enc_key = machine.process_text('messageKey')
+
+    cipherText = machine.process_text(message)
+
+    html = "Cipher Text:" + cipherText
+    html += "\n"
+    html += "Key: " + enc_key
     return 1
 
 
