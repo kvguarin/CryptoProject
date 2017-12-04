@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+from enigma.machine import EnigmaMachine
 
 app = Flask(__name__)
 app.debug = True
@@ -35,10 +36,39 @@ def decryptResult():
     startingPosition1 = request.form['startingPosition1']
     startingPosition2 = request.form['startingPosition2']
     startingPosition3 = request.form['startingPosition3']
+    messageKey = request.form['messageKey']
+    message = request.form['message']
+
+    rotors = getRotor(rotor1, rotor2, rotor3)
+    ringSettings = [ringSetting1, ringSetting2, ringSetting3]
+    setDisplay = startingPosition1 + startingPosition2 + startingPosition3
+
+    machine = EnigmaMachine.from_key_sheet(
+        rotors,
+        reflector,
+        ringSettings
+    )
+
+    # set machine initial starting position
+    machine.set_display(setDisplay)
+
+    # decrypt the message key
+    msg_key = machine.process_text(messageKey)
+
+    # decrypt the cipher text with the unencrypted message key
+    machine.set_display(msg_key)
+
+    plaintext = machine.process_text(message)
+
+    html = plaintext
+    return html
+
+def getRotor(rotor1, rotor2, rotor3):
+    romNumRotors = ['0', 'I', 'II', 'III', 'IV', 'V']
+    rotors = romNumRotors[rotor1] + " " + romNumRotors[rotor2] + " " + romNumRotors[rotor3]
+    return rotors
 
 
-
-    return 1
 
 @app.route("/encryptResult", methods=['POST'])
 def encryptResult():
