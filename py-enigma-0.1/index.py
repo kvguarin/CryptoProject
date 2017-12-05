@@ -76,7 +76,7 @@ def getRotor(rotor1, rotor2, rotor3):
 @app.route("/encryptResult", methods=['POST'])
 def encryptResult():
     message = request.form['message']
-    reflector = request.form['reflector'].toUpper()
+    reflector = request.form['reflector'].upper()
     rotor1 = int(request.form['rotor1'])
     rotor2 = int(request.form['rotor2'])
     rotor3 = int(request.form['rotor3'])
