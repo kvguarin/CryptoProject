@@ -44,38 +44,18 @@ def decryptSimulator():
 
 @app.route("/decryptResult", methods=['POST'])
 def decryptResult():
-    # message1 = "decrypt page"
-    message1 = request.form['message']
-    return message1
-
-
-
-
-
-
-
-@app.route('/simulator', methods=['POST', 'GET'])
-def simulator():
-    return render_template('simulator.html')
-
-
-
-
-
-
-    rotor1 = request.form['rotor1']
-    rotor2 = request.form['rotor2']
-    rotor3 = request.form['rotor3']
+    message = request.form['message']
     reflector = request.form['reflector']
+    rotor1 = int(request.form['rotor1'])
+    rotor2 = int(request.form['rotor2'])
+    rotor3 = int(request.form['rotor3'])
     ringSetting1 = request.form['ringSetting1']
     ringSetting2 = request.form['ringSetting2']
     ringSetting3 = request.form['ringSetting3']
     startingPosition1 = request.form['startingPosition1']
     startingPosition2 = request.form['startingPosition2']
     startingPosition3 = request.form['startingPosition3']
-    messageKey = request.form['messageKey']
-    message = request.form['message']
-
+    messageKey = request.form['messageKey1'] + request.form['messageKey2'] + request.form['messageKey3']
     rotors = getRotor(rotor1, rotor2, rotor3)
     ringSettings = [ringSetting1, ringSetting2, ringSetting3]
     setDisplay = startingPosition1 + startingPosition2 + startingPosition3
@@ -100,6 +80,12 @@ def simulator():
     html = plaintext
     return html
 
+
+@app.route('/simulator', methods=['POST', 'GET'])
+def simulator():
+    return render_template('simulator.html')
+
+
 def getRotor(rotor1, rotor2, rotor3):
     romNumRotors = ['0', 'I', 'II', 'III', 'IV', 'V']
     rotors = romNumRotors[rotor1] + " " + romNumRotors[rotor2] + " " + romNumRotors[rotor3]
@@ -120,7 +106,7 @@ def encryptResult():
     startingPosition1 = request.form['startingPosition1']
     startingPosition2 = request.form['startingPosition2']
     startingPosition3 = request.form['startingPosition3']
-    messageKey = request.form['messageKey']
+    messageKey = request.form['messageKey1'] + request.form['messageKey2'] + request.form['messageKey3']
     message = request.form['message']
 
     rotors = getRotor(rotor1, rotor2, rotor3)
