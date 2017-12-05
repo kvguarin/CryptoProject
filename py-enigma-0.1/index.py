@@ -9,16 +9,60 @@ app.debug = True
 
 @app.route("/")
 def landingPage():
+    # html = ""
+    # html += "<html>\n"
+    # html += "<body>\n"
+    #
+    # html += '<form method = "POST" action="decryptResult">\n'
+    # html += 'Value1: <input type="text" name="message" />\n'
+    # html += 'Value2: <input type="text" name="message2" />\n'
+    # html += '<input type="submit" value="submit" />\n'
+    #
+    # html += "</form>\n"
+    # html += "</body>\n"
+    # html += "</html>\n"
+    # return html
     return render_template('index.html')
+
+
+@app.route("/decryptSimulator", methods=['POST'])
+def decryptSimulator():
+    # html = ""
+    # html += "<html>\n"
+    # html += "<body>\n"
+    #
+    # html += '<form method = "POST" action="decryptResult">\n'
+    # html += 'Value1: <input type="text" name="message" />\n'
+    # html += 'Value2: <input type="text" name="message2" />\n'
+    # html += '<input type="submit" value="submit" />\n'
+    #
+    # html += "</form>\n"
+    # html += "</body>\n"
+    # html += "</html>\n"
+    # return html
+    return render_template('decryptSimulator.html')
+
+@app.route("/decryptResult", methods=['POST'])
+def decryptResult():
+    # message1 = "decrypt page"
+    message1 = request.form['message']
+    return message1
+
+
+
+
+
+
 
 @app.route('/simulator', methods=['POST', 'GET'])
 def simulator():
     return render_template('simulator.html')
 
-@app.route("/decryptResult", methods=['POST'])
-def decryptResult():
-    message = request.form['message']
-    return message
+
+
+
+
+
     rotor1 = request.form['rotor1']
     rotor2 = request.form['rotor2']
     rotor3 = request.form['rotor3']
