@@ -19,7 +19,7 @@ def decryptSimulator():
 
 @app.route("/encryptSimulator", methods=['POST'])
 def encryptSimulator():
-    return "at encrypt simulator"
+    return render_template('encryptSimulator.html')
 
 
 @app.route("/decryptResult", methods=['POST'])
