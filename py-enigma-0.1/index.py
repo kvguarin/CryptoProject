@@ -97,11 +97,14 @@ def encryptResult():
     )
 
 
-    # set machine initial starting position
+    # set machine initial starting position of rotors
     machine.set_display(setDisplay)
 
     #encrypt the key
     enc_key = machine.process_text(messageKey)
+
+    # use message key
+    machine.set_display(messageKey)
 
     cipherText = machine.process_text(message)
 
