@@ -16,6 +16,12 @@ def landingPage():
 def decryptSimulator():
     return render_template('decryptSimulator.html')
 
+
+@app.route("/encryptSimulator", methods=['POST'])
+def encryptSimulator():
+    return "at encrypt simulator"
+
+
 @app.route("/decryptResult", methods=['POST'])
 def decryptResult():
     message = request.form['message']
@@ -30,14 +36,13 @@ def decryptResult():
     startingPosition2 = request.form['startingPosition2']
     startingPosition3 = request.form['startingPosition3']
     messageKey = request.form['messageKey1'] + request.form['messageKey2'] + request.form['messageKey3']
-    rotors = getRotor(rotor1, rotor2, rotor3)
 
     setDisplay = startingPosition1 + startingPosition2 + startingPosition3
 
     machine = EnigmaMachine.from_key_sheet(
-       rotors,
-       reflector=request.form['reflector'].upper(),
-        ring_settings = [ringSetting1, ringSetting2, ringSetting3]
+        rotors=getRotor(rotor1, rotor2, rotor3),
+        reflector=request.form['reflector'].upper(),
+        ring_settings=[ringSetting1, ringSetting2, ringSetting3]
     )
 
 
@@ -70,29 +75,31 @@ def getRotor(rotor1, rotor2, rotor3):
 
 @app.route("/encryptResult", methods=['POST'])
 def encryptResult():
-    return "hello"
-    rotor1 = request.form['rotor1']
-    rotor2 = request.form['rotor2']
-    rotor3 = request.form['rotor3']
-    reflector = request.form['reflector']
-    ringSetting1 = request.form['ringSetting1']
-    ringSetting2 = request.form['ringSetting2']
-    ringSetting3 = request.form['ringSetting3']
+    message = request.form['message']
+    reflector = request.form['reflector'].toUpper()
+    rotor1 = int(request.form['rotor1'])
+    rotor2 = int(request.form['rotor2'])
+    rotor3 = int(request.form['rotor3'])
+    ringSetting1 = int(request.form['ringSetting1'])
+    ringSetting2 = int(request.form['ringSetting2'])
+    ringSetting3 = int(request.form['ringSetting3'])
     startingPosition1 = request.form['startingPosition1']
     startingPosition2 = request.form['startingPosition2']
     startingPosition3 = request.form['startingPosition3']
     messageKey = request.form['messageKey1'] + request.form['messageKey2'] + request.form['messageKey3']
-    message = request.form['message']
+
 
     rotors = getRotor(rotor1, rotor2, rotor3)
     ringSettings = [ringSetting1, ringSetting2, ringSetting3]
     setDisplay = startingPosition1 + startingPosition2 + startingPosition3
 
     machine = EnigmaMachine.from_key_sheet(
-        rotors,
-        reflector,
-        ringSettings
+        rotors=getRotor(rotor1, rotor2, rotor3),
+        reflector=request.form['reflector'].upper(),
+        ring_settings=[ringSetting1, ringSetting2, ringSetting3]
     )
+
+
     # set machine initial starting position
     machine.set_display(setDisplay)
 
