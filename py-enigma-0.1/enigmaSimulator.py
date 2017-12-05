@@ -58,6 +58,27 @@ def decryptResult():
     plaintext = machine.process_text(message)
 
     html = plaintext
+    html = "<!DOCTYPE html>\n"
+    html += "<html lang='en'>\n"
+    html += "<head>\n"
+    html += "<meta charset='UTF-8'>\n"
+    html += "<title>Encrypted</title>\n"
+    html += "</head>\n"
+    html += "<body style='background-color:powderblue;'>\n"
+    html += "<div>\n"
+    html += "<p style='font-family: Courier;'>Plain Text: " + plaintext + "</p>\n"
+    html += "</div>\n"
+    html += "<div>\n"
+    html += "<form method='POST' action='encryptSimulator'>\n"
+    html += "<input style='width:150px; height:150px; font-size:100px;' type='submit' value='Encrypt'/>\n"
+    html += "</form>\n"
+    html += "<br/>\n"
+    html += "<form method='POST' action='decryptSimulator'>\n"
+    html += "<input style='width:150px; height:150px; font-size:100px;' type='submit' value='Decrypt'/>\n"
+    html += "</form>\n"
+    html += "</div>\n"
+    html += "</body>"
+    html += "</html>"
     return html
 
 
@@ -108,9 +129,30 @@ def encryptResult():
 
     cipherText = machine.process_text(message)
 
-    html = "Cipher Text: " + cipherText
-    html += "\n"
-    html += "Key: " + enc_key
+    html = "<!DOCTYPE html>\n"
+    html += "<html lang='en'>\n"
+    html += "<head>\n"
+    html += "<meta charset='UTF-8'>\n"
+    html += "<title>Encrypted</title>\n"
+    html += "</head>\n"
+    html += "<body style='background-color:powderblue;'>\n"
+    html += "<div>\n"
+    html+= "<p style='font-family: Courier;'>Cipher Text: " + cipherText + "</p>"
+    html += "</div>\n"
+    html += "<div>\n"
+    html+= "<p style='font-family: Courier;'>Message Key: " + enc_key + "</p>"
+    html += "</div>\n"
+    html += "<div>\n"
+    html += "<form method='POST' action='encryptSimulator'>\n"
+    html += "<input style='width:150px; height:150px; font-size:100px;' type='submit' value='Encrypt'/>\n"
+    html += "</form>\n"
+    html += "<br/>\n"
+    html += "<form method='POST' action='decryptSimulator'>\n"
+    html += "<input style='width:150px; height:150px; font-size:100px;' type='submit' value='Decrypt'/>\n"
+    html += "</form>\n"
+    html += "</div>\n"
+    html += "</body>"
+    html += "</html>"
     return html
 
 
