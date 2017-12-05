@@ -11,21 +11,14 @@ app.debug = True
 def landingPage():
     return render_template('index.html')
 
-@app.route('/simulator', methods=['POST'])
+@app.route('/simulator', methods=['POST', 'GET'])
 def simulator():
-    html = "hello"
-    # html += "<html>\n"
-    # html += "<body>\n"
-    # html += '<form method = "POST" action="form_input">\n'
-    # html += 'Enter name of movie: <input type="text" name="userInput" />\n'
-    # html += '<input type="submit" value="submit" />\n'
-    # html += "</form>\n"
-    # html += "</body>\n"
-    # html += "</html>\n"
-    return html
+    return render_template('simulator.html')
 
 @app.route("/decryptResult", methods=['POST'])
 def decryptResult():
+    message = request.form['message']
+    return message
     rotor1 = request.form['rotor1']
     rotor2 = request.form['rotor2']
     rotor3 = request.form['rotor3']
@@ -72,6 +65,7 @@ def getRotor(rotor1, rotor2, rotor3):
 
 @app.route("/encryptResult", methods=['POST'])
 def encryptResult():
+    return "hello"
     rotor1 = request.form['rotor1']
     rotor2 = request.form['rotor2']
     rotor3 = request.form['rotor3']

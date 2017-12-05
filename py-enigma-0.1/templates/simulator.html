@@ -328,14 +328,14 @@
     </tbody>
 </table>
 <div style="display:inline; text-align:center;">
-    <form method='POST' action='simulator'>
-        <input style='width:150px; height:150px; font-size:100px;' type='submit' value='Encrypt'/>
-    </form>
-    <form method='POST' action='simulator'>
-        <input style='width:150px; height:150px; font-size:100px;' type='submit' value='Decrypt'/>
-    </form>
-    <form method="POST" action="form_input">
+    <form id="message" name="message" method="POST">
         Your Message <input type="text" name="message"/>
+    </form>
+    <form method='POST' action='decryptResult'>
+        <input type='submit' value='Decrypt'/>
+    </form>
+    <form method='POST' action='encryptResult'>
+        <input type='submit' value='Encrypt'/>
     </form>
 </div>
 </body>
