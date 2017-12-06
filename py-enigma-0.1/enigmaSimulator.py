@@ -1,3 +1,10 @@
+# Authors: Kylie Guarin and Leonard Fernando
+# Class: CS486 Cryptography
+# Final Project
+# Due December 6th, 2017
+# This is an Enigma Simulator Web app which uses
+# Py-Enigma and Flask
+
 from flask import Flask
 from flask import request
 from flask import render_template
@@ -6,22 +13,25 @@ from enigma.machine import EnigmaMachine
 app = Flask(__name__)
 app.debug = True
 
-
+# The landing page of the app
 @app.route("/")
 def landingPage():
     return render_template('index.html')
 
 
+# Page to decrypt the message
 @app.route("/decryptSimulator", methods=['POST'])
 def decryptSimulator():
     return render_template('decryptSimulator.html')
 
 
+# Page to encrypt a message
 @app.route("/encryptSimulator", methods=['POST'])
 def encryptSimulator():
     return render_template('encryptSimulator.html')
 
 
+# Returns the decrypted message
 @app.route("/decryptResult", methods=['POST'])
 def decryptResult():
     message = request.form['message']
@@ -82,18 +92,20 @@ def decryptResult():
     return html
 
 
+# Simulator main page
 @app.route('/simulator', methods=['POST', 'GET'])
 def simulator():
     return render_template('simulator.html')
 
 
+# gets the rotors and turns it into a String with roman numerals
 def getRotor(rotor1, rotor2, rotor3):
     romNumRotors = ['0', 'I', 'II', 'III', 'IV', 'V']
     rotors = romNumRotors[rotor1] + " " + romNumRotors[rotor2] + " " + romNumRotors[rotor3]
     return rotors
 
 
-
+# Returns the encrypted result
 @app.route("/encryptResult", methods=['POST'])
 def encryptResult():
     message = request.form['message']
