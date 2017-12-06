@@ -1,8 +1,12 @@
 # CryptoProject
 Written by Kylie Guarin and Leonard Fernando
+
 CS 486: Cryptography
+
 Professor: Paul Lambert
+
 Semester: Fall 2018
+
 Final Project
 
 This is an Enigma emulator written in Python2. It uses the Py-Enigma library and Flask.
@@ -14,6 +18,7 @@ To run in Terminal:
 This file is located in Project02/py-enigma-0.1 Folder
 
 Information about Enigma:
+
 The enigma machines were electro-mechanical rotor cipher machines developed by
 Arthur Scherbius in 1918. They were most notably used by Germany to encrypt military
 messages during WWII. The enigma machine is a mechanically operated device with an
